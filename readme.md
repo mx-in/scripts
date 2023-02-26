@@ -52,9 +52,9 @@
     bash ydd.sh https://www.youtube.com/watch\?v\=jf6oMCCX0uw\&ab_channel\=dailydictation 00:49 00:4 dd-555
     ```
     
-* ## [备份 MacOS 下 Photo 中照片至 OneDrive](https://github.com/mx-in/scripts/tree/main/mac_photo_to_onedrive)
+* ## [备份 至 OneDrive](https://github.com/mx-in/scripts/tree/main/mac_photo_to_onedrive)
 
-  * ### 使用 Photo 存在的问题：
+  * ### 备份 MacOS 下 Photo 应用中照片存在的问题：
 
     1. Photo 在创建备份时将照片的创建时间改为了备份时间
 
@@ -95,4 +95,19 @@
     # 2. 合并至 OneDrive 文件备份 (mv)
     fish file_rearrange.fish <OneDrive photo directory> <Photo backup directory>
     ```
+ * ## [根据 content create time 更新 create time](https://github.com/mx-in/scripts/blob/main/mac_photo_to_onedrive/rearrange_by_create_time.fish) 以及根据创建时间[同步到 OneDrive 照片目录](https://github.com/mx-in/scripts/blob/main/mac_photo_to_onedrive/update_create_time_to_content_time.fish)
+  * ### 依赖：
+    * [fish-shell](https://github.com/fish-shell/fish-shell)
+    * [ctime](https://gist.github.com/mmozeiko/4972c28be07e2b7c10dc88089eec7083)
+
+  * ### 使用方法
+
+    ```bash
+    # 1. 更正照片创建时间 (touch -t)
+    fish rearrange_by_create_time.fish <Photo backup directory>
+    # 2. 合并至 OneDrive 文件备份 (mv)
+    fish update_create_time_to_content_time.fish <OneDrive photo directory> <Photo backup directory>
+    ```
+
+
   
